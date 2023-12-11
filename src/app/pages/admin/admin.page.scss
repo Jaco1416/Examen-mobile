@@ -1,0 +1,37 @@
+#nombre{
+    text-align: center;
+    font-size: small;
+}
+
+#color_fondo_titulo{
+    background-color: #012C56;
+}
+
+
+
+#colorletra{
+    color: #fff!important;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+ion-button {
+    --background: #012C56;
+    --background-hover: #456381;
+    --background-activated: rgb(15, 85, 155);
+    --background-focused: #02203d;
+} 
+
+.required{
+    color: rgb(194, 3, 3);
+    padding-left: 30px;
+}
+
+#info-list{
+    margin-top: 40px;
+    color: #012C56;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+}

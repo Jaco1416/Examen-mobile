@@ -1,0 +1,50 @@
+<ion-content  class="content">
+  <ion-grid >
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col> <img id="img-duoc" src="../../../assets/img/Duoc_logo.png" alt=""> </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="usuario" (ngSubmit)="ingresar()">
+    <div class="fondo">
+      <ion-card class="cardlogin">
+        <img src="../../../assets/img/Logo_DuocUC.svg.png" alt="" class="imagen_login" style="padding: 10px; margin-top: 5px;">
+        <ion-card-header id="color_fondo_titulo" mode="md">
+          <ion-card-title id="colorletra">Ingresar Al Sistema</ion-card-title>
+        </ion-card-header>
+        <ion-card-content  mode="md">
+    
+          <ion-item>
+            <ion-label position="stacked">Correo</ion-label>
+            <ion-input formControlName="correo" id="correo" type="text" placeholder="Ingrese correo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input formControlName="clave" id="clave "type="password" placeholder="Ingrese clave"></ion-input>
+          </ion-item>
+          <ion-button type="submit" expand="block" id="botonInicio">Ingresar</ion-button>
+          <ion-button routerLink="/registro" expand="block" id="botonRegistrar">Registrar</ion-button>
+          <br>
+          <a style="text-align: center;" routerLink="/restablecer" id="olvidado"> Restablecer contraseña</a>
+          <br>
+          <p>¿No tienes cuenta?</p>
+          <br>
+          
+        </ion-card-content>
+       
+    
+      </ion-card>
+    </div>
+
+  </form>
+  
+    <ion-grid >
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col> <img id="img" src="../../../assets/img/logoRegistrapp_3.png" alt=""> </ion-col>
+        <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>  

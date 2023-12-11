@@ -1,0 +1,100 @@
+<ion-content>
+
+  <ion-card>
+    <ng-template #no_hay>
+      <h2 style="text-align: center;">No Existen Asignaturas Registradas</h2>
+    </ng-template>
+  </ion-card>
+
+  <ion-card style="background-color: #fff;">
+    <ion-card-header id="color_fondo_titulo">
+      <h2 id="colorletra">Lista de Asignaturas</h2>
+    </ion-card-header>
+    <div *ngIf="asignaturas.length > 0; else no_hay">
+      <h6 id="info-list">Deslizar → para modificar y ← para eliminar</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h5 style="text-align: center;">Codigo Asignatura</h5>
+            </ion-col>
+            <ion-col>
+              <h5 style="text-align: center;">Nombre Asignatura</h5>
+            </ion-col>
+            <ion-col>
+              <h5 style="text-align: center;">Profesor</h5>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      <ion-list *ngFor="let asig of asignaturas">
+          <!-- sliding -->
+          <ion-item-sliding>
+  
+            <ion-item-options side="start">
+              <div >
+                <ion-button expand="block" (click)="buscar(asig.id)">Modificar</ion-button>
+              </div>
+            </ion-item-options>
+  
+            <ion-item>
+              <ion-label id="nombre">{{asig.codigo}} </ion-label>
+              <ion-label id="nombre">{{asig.nombre}}</ion-label>
+              <ion-label id="nombre">{{asig.profesor}}</ion-label>
+              
+            </ion-item>
+  
+            <ion-item-options side="end">
+              <div>
+                <ion-button  color="danger" expand="block" (click)="eliminar(asig.id)">Eliminar</ion-button>
+              </div>
+            </ion-item-options>
+  
+  
+          </ion-item-sliding>        
+
+      </ion-list>
+    </div>
+  </ion-card>
+
+  <ion-card id="carta">
+    <ion-card-header id="color_fondo_titulo">
+      <h2 id="colorletra">Formulario Asignaturas</h2>
+    </ion-card-header>
+    <ion-card-content id="form-carta">
+      <form [formGroup]="asignatura" (ngSubmit)="registrar()">
+
+        <ion-item id="codigo">
+          <ion-input label="Codigo Asignatura" labelPlacement="floating" formControlName="codigo" type="number" placeholder="Ingrese codigo de asignatura"></ion-input>
+        </ion-item>
+
+        <ion-item id="nombres">
+          <ion-input label="Nombre Asignatura" labelPlacement="floating" formControlName="nombre" placeholder="Ingrese nombre de asignatura"></ion-input>
+        </ion-item>
+
+        <ion-item id="profesor" >
+          <ion-select label="Profesor" placeholder="Seleccione Profesor" formControlName="profesor">
+            <div *ngFor="let a of usuarios" >
+              <ion-select-option *ngIf="a.perfil == 'docente'">
+                {{a.p_nombre}}
+              </ion-select-option>
+            </div>
+          </ion-select>
+
+        </ion-item>
+
+        <div [hidden]="boton_registrar">
+          <ion-button shape="round" (click)="registrar()" expand="block" [disabled]="asignatura.invalid">Registrar</ion-button>
+        </div>
+
+        <div [hidden]="boton_modificar">
+          <ion-button shape="round" expand="block" (click)="modificar()" [disabled]="asignatura.invalid">Aceptar Cambios</ion-button>
+        </div>
+
+        <ion-button shape="round" type="reset" expand="block" (click)="limpiar()">Limpiar</ion-button>
+        
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

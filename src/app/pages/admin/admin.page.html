@@ -1,0 +1,180 @@
+<ion-content>
+
+  <ion-card>
+    <ng-template #no_hay>
+      <h2 style="text-align: center;">No Existen Usuarios Registrados</h2>
+    </ng-template>
+  </ion-card>
+
+  <ion-card style="background-color: #fff;">
+    <ion-card-header id="color_fondo_titulo">
+      <h2 id="colorletra">Lista de usuarios</h2>
+    </ion-card-header>
+    <div *ngIf="usuarios.length > 0; else no_hay">
+      <h6 id="info-list">Deslizar → para modificar y ← para eliminar</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h5 style="text-align: center;">Rut</h5>
+            </ion-col>
+            <ion-col>
+              <h5 style="text-align: center;">Nombre</h5>
+            </ion-col>
+            <ion-col>
+              <h5 style="text-align: center;">Apellidos</h5>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      <ion-list *ngFor="let usu of usuarios">
+          <!-- sliding -->
+          <ion-item-sliding>
+  
+  
+            <ion-item-options side="start">
+              <div >
+                <ion-button [disabled]="usu.perfil == 'admin'" expand="block" (click)="buscar(usu.id)">Modificar</ion-button>
+              </div>
+            </ion-item-options>
+  
+            <ion-item>
+              <ion-label id="nombre">{{usu.rut}} </ion-label>
+              <ion-label id="nombre">{{usu.p_nombre}}</ion-label>
+              <ion-label id="nombre">{{usu.ap_paterno}} {{usu.ap_materno}} </ion-label>
+            </ion-item>
+  
+            <ion-item-options side="end">
+              <div>
+                <ion-button  color="danger" expand="block" (click)="eliminar(usu.rut, usu.id)">Eliminar</ion-button>
+              </div>
+            </ion-item-options>
+  
+  
+          </ion-item-sliding>        
+
+      </ion-list>
+    </div>
+  </ion-card>
+
+  <form [formGroup]="usuario">
+
+    <!-- Formulario -->
+    <ion-card>
+      <ion-card-header style="background-color: #012C56;">
+        <h2 id="colorletra">Formulario</h2>
+      </ion-card-header>
+      <ion-list id="form_regis">
+        <ion-item id="rut">
+          <ion-input label="Rut" label-placement="floating"
+            placeholder="Ingrese Rut Sin Puntos con Guión y digito verificador  (Ej: 11123123-7)" type="text"
+            formControlName="rut"></ion-input>
+          <div *ngIf="usuario.controls.rut.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Primer Nombre" label-placement="floating" placeholder="Ingrese Primer Nombre" type="text"
+            formControlName="p_nombre"></ion-input>
+          <div *ngIf="usuario.controls.p_nombre.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Segundo Nombre" label-placement="floating" placeholder="Ingrese Segundo Nombre" type="text"
+            formControlName="s_nombre"></ion-input>
+          <div *ngIf="usuario.controls.s_nombre.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Apellido Paterno" label-placement="floating" placeholder="Ingrese Apellido" type="text"
+            formControlName="ap_paterno"></ion-input>
+          <div *ngIf="usuario.controls.ap_paterno.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Apellido Materno" label-placement="floating" placeholder="Ingrese Apellido" type="text"
+            formControlName="ap_materno"></ion-input>
+          <div *ngIf="usuario.controls.ap_materno.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-select formControlName="perfil" label="Tipo usuario" placeholder="Seleccione usuario">
+            <ion-select-option value="admin">Administrador</ion-select-option>
+            <ion-select-option value="alumno">Alumno</ion-select-option>
+            <ion-select-option value="docente">Docente</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Correo" label-placement="floating" placeholder="Ingrese Correo (Ej: Juan@duocuc.cl (si es alumno) | Juan@profesor.duoc.cl (si es profesor) | Juan@duoc.cl (si es admin) )"
+            type="email" formControlName="email"></ion-input>
+          <div *ngIf="usuario.controls.email.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item id="fecha_nac">
+          <ion-input label="Fecha Nacimiento" label-placement="floating" placeholder="Ingrese Fecha De Nacimiento"
+            type="date" formControlName="fecha_nac"></ion-input>
+          <div *ngIf="usuario.controls.fecha_nac.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Contraseña" label-placement="floating" placeholder="Ingrese Constraseña" type="password"
+            formControlName="pass_1"></ion-input>
+        </ion-item>
+        <div *ngIf="usuario.controls.pass_1.getError('minlength') ||
+        !usuario.controls.pass_1.value" class="required">
+          * Mínimo 6 caracteres
+        </div>
+        <div *ngIf="usuario.controls.pass_1.getError('pattern') ||
+        !usuario.controls.pass_1.value" class="required">
+          * Debe contener al menos 1 mayuscula
+        </div>
+        <div *ngIf="usuario.controls.pass_1.getError('pattern') ||
+        !usuario.controls.pass_1.value" class="required">
+          * Debe contener al menos 1 número
+        </div>
+
+        <ion-item>
+          <ion-input label="Confirme Contraseña" label-placement="floating" placeholder="Reingrese Constraseña"
+            type="password" formControlName="pass_2"></ion-input>
+          <div *ngIf="usuario.controls.pass_2.getError('required')" class="required">
+            *
+          </div>
+        </ion-item>
+        <div *ngIf="usuario.getError('claveIgual')" class="required">
+          * Contraseña no coincide
+        </div>
+
+
+        <!-- Botones -->
+        <div [hidden]="boton_registrar">
+          <ion-button [disabled]="usuario.invalid" shape="round" (click)="registrar()"
+            expand="block">Registrar</ion-button>
+        </div>
+
+        <div [hidden]="boton_modificar">
+          <ion-button shape="round" expand="block" (click)="modificar()">Aceptar Cambios</ion-button>
+        </div>
+
+        <div>
+          <ion-button shape="round" expand="block" (click)="limpiar()">Limpiar</ion-button>
+        </div>
+
+      </ion-list>
+
+    </ion-card>
+
+  </form>
+</ion-content>

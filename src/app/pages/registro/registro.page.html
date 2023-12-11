@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start">volver</ion-back-button>
+    <ion-button slot="end" (click)="redirectLogin()" style="margin-right: 5px;"><ion-icon slot="start" name="log-out-outline"></ion-icon>login</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style="background-color: #fff;">
+    <ion-card-header id="color_fondo_titulo">
+        <h2 id="colorletra">REGISTRO DE ALUMNO</h2>
+    </ion-card-header>
+
+    <ion-card-content>
+      
+      <form [formGroup]="usuario" (ngSubmit)="registrar()">
+        <h2 id="letraDatos">Ingrese sus datos</h2>
+        <h3>Todos Los Campos Que Tienen Un ( * ) Son Obligatorios!</h3>
+
+        <ion-list>
+          <ion-item id="rut">
+            <ion-input label="Rut" label-placement="floating"
+              placeholder="Ingrese Rut Sin Puntos con Guión y digito verificador  (Ej: 11123123-7)" type="text"
+              formControlName="rut"></ion-input>
+              <div *ngIf="usuario.controls.rut.getError('required')" class="required">
+                *
+              </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-input label="Primer Nombre" label-placement="floating" placeholder="Ingrese Primer Nombre" type="text"
+              formControlName="p_nombre"></ion-input>
+            <div *ngIf="usuario.controls.p_nombre.getError('required')" class="required">
+              *
+            </div>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-input label="Segundo Nombre" label-placement="floating" placeholder="Ingrese Segundo Nombre"
+              type="text" formControlName="s_nombre"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input label="Apellido Paterno" label-placement="floating" placeholder="Ingrese Apellido" type="text"
+              formControlName="ap_paterno"></ion-input>
+            <div *ngIf="usuario.controls.ap_paterno.getError('required')" class="required">
+              *
+            </div>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-input label="Apellido Materno" label-placement="floating" placeholder="Ingrese Apellido" type="text"
+              formControlName="ap_materno"></ion-input>
+            <div *ngIf="usuario.controls.ap_materno.getError('required')" class="required">
+              *
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-select formControlName="perfil" label="Tipo usuario" placeholder="Seleccione usuario">
+              <ion-select-option value="alumno">Alumno</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-input label="Correo" label-placement="floating"
+              placeholder="Ingrese Correo  (Ej: Juan@alumno.cl)" type="email"
+              formControlName="email"></ion-input>
+            <div *ngIf="usuario.controls.email.getError('required')" class="required">
+              *
+            </div>
+          </ion-item>
+
+          <ion-item id="fecha_nac">
+            <ion-input label="Fecha Nacimiento" label-placement="floating" placeholder="Ingrese Fecha De Nacimiento"
+              type="date" formControlName="fecha_nac"></ion-input>
+            <div *ngIf="usuario.controls.fecha_nac.getError('required')" class="required">
+              *
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-input label="Contraseña" label-placement="floating" placeholder="Ingrese Constraseña" type="password"
+              formControlName="pass_1"></ion-input>
+          </ion-item>
+          <div *ngIf="usuario.controls.pass_1.getError('minlength') ||
+          !usuario.controls.pass_1.value" class="required">
+            * Mínimo 6 caracteres
+          </div>
+          <div *ngIf="usuario.controls.pass_1.getError('pattern') ||
+          !usuario.controls.pass_1.value" class="required">
+            * Debe contener al menos 1 mayuscula
+          </div>
+          <div *ngIf="usuario.controls.pass_1.getError('pattern') ||
+          !usuario.controls.pass_1.value" class="required">
+            * Debe contener al menos 1 número
+          </div>
+  
+          <ion-item>
+            <ion-input label="Confirme Contraseña" label-placement="floating" placeholder="Reingrese Constraseña"
+              type="password" formControlName="pass_2"></ion-input>
+            <div *ngIf="usuario.controls.pass_2.getError('required')" class="required">
+              *
+            </div>
+          </ion-item>
+          <div *ngIf="usuario.getError('claveIgual')" class="required">
+            * Contraseña no coincide
+          </div>
+
+        </ion-list>
+
+        <div [hidden]="boton_registrar">
+          <ion-button [disabled]="usuario.invalid" shape="round" type="submit" expand="block" >Registrar</ion-button>
+        </div>
+        <!-- NO FUNCIONA CON TYPE: SUBMIT -->      
+        <div>
+          <ion-button shape="round" expand="block" (click)="limpiar()">Limpiar</ion-button>
+        </div>
+
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

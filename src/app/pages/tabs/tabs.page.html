@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-button slot="end" (click)="salir()" style="margin-right: 5px;"><ion-icon slot="start" name="log-out-outline"></ion-icon>Cerrar Sesión</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar>
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>Home
+    </ion-tab-button>
+      <ion-tab-button *ngIf="perfil_weon == 'admin'" tab="admin">
+        <ion-icon name="person"></ion-icon>Administrador
+    </ion-tab-button>
+    <ion-tab-button *ngIf="perfil_weon == 'docente'" tab="profesores">
+      <ion-icon name="book"></ion-icon>Generar Código QR
+    </ion-tab-button>
+    <ion-tab-button *ngIf="perfil_weon == 'alumno'" tab="alumno">
+      <ion-icon name="book"></ion-icon>Registrar Asistencia
+    </ion-tab-button>
+    <ion-tab-button *ngIf="perfil_weon == 'admin'" tab="asignaturas">
+      <ion-icon name="book"></ion-icon>Asignaturas
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+</ion-content>
+
+

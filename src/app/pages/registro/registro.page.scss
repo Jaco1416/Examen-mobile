@@ -1,0 +1,72 @@
+.required{
+    color: rgb(194, 3, 3);
+    padding-left: 30px;
+}
+
+h1{
+    color: black;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    color: red;
+}
+
+#reqContra{
+    font-size: small;
+    padding-left: 30px;
+}
+
+#volverLogin{
+    justify-content: center;
+    color: blue;
+}
+
+#nombre{
+    text-align: center;
+}
+
+#color_fondo_titulo{
+    background-color: #012C56;
+    border-radius: 5px;
+}
+
+
+
+#colorletra{
+    color: #fff!important;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+ion-button {
+    --background: #012C56;
+    --background-hover: #456381;
+    --background-activated: rgb(15, 85, 155);
+    --background-focused: #02203d;
+} 
+
+#info-list{
+    margin-top: 40px;
+    color: #012C56;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+#letraDatos{
+    color: #012C56;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    
+}

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start">volver</ion-back-button>
+    <ion-button slot="end" (click)="redirectLogin()" style="margin-right: 5px;"><ion-icon slot="start" name="log-out-outline"></ion-icon>login</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col> <img id="img-duoc" src="../../../assets/img/Duoc_logo.png" alt=""> </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card class="cardlogin">
+    <ion-card-header id="color_fondo_titulo">
+      <h2 id="colorletra">Restablecer contraseña</h2>
+    </ion-card-header>
+    <h5 id="letraDatos">Se debe ingresar su correo personal para enviar la solicitud de reestablecer contraseña</h5>
+    <ion-item>
+      <ion-input [(ngModel)]="correo_buscar" label="Correo" label-placement="floating" placeholder="Ingrese Correo Personal (Ej: Juan@gmail.cl)"
+        type="clear-input"></ion-input>
+    </ion-item>
+    <ion-button id="botonInicio" expand="block" (click)="buscarCorreo()">Enviar</ion-button>
+
+  </ion-card>
+</ion-content>

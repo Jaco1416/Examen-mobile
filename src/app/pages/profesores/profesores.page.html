@@ -1,0 +1,19 @@
+<ion-content>
+  <img id="imgduoc" src="../../../assets/img/Duoc_logo.png" alt="">
+  <ion-card>
+    <ion-card-header id="color_fondo_titulo">
+      <strong id="colorletraStrong">Bienvenido</strong>
+      <h2 id="colorletra">Registrar asistencia</h2>
+    </ion-card-header>
+
+    <ion-card-content >
+      <qrcode [qrdata]="asistencia" [width]="256" [errorCorrectionLevel]="'M'">
+      </qrcode>
+    </ion-card-content>
+    
+      <h1 id="colorletra1">Código Asistencia</h1>
+      <h2 id="colorletra1">{{numeroRandom}}</h2>
+
+  </ion-card>
+
+</ion-content>

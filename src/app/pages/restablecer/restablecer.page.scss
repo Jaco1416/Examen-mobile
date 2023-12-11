@@ -1,0 +1,67 @@
+h1 {
+    color: black;
+    text-align: center;
+}
+
+#nombre {
+    text-align: center;
+}
+
+#color_fondo_titulo {
+    background-color: #012C56;
+    border-radius: 5px;
+}
+
+
+
+#colorletra {
+    color: #fff !important;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+#botonInicio {
+    --background: #012C56;
+    --background-hover: #456381;
+    --background-activated: rgb(15, 85, 155);
+    --background-focused: #02203d;
+}
+
+.required {
+    color: rgb(194, 3, 3);
+    padding-left: 30px;
+}
+
+#info-list {
+    margin-top: 40px;
+    color: #012C56;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cardlogin {
+    margin-top: 50%;
+    
+    
+
+}
+
+
+#img_duoc {
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    display: inline;
+    
+}
+#letraDatos{
+    color: #012C56;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    
+}
